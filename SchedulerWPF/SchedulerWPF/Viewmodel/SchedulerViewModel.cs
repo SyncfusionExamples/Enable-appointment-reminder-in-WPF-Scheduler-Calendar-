@@ -10,9 +10,9 @@ using System.Windows.Media;
 
 namespace SchedulerWPF
 {
-    public class SchedulerViewModel : INotifyPropertyChanged
+    public class SchedulerViewModel
     {
-        private ScheduleAppointmentCollection events;
+        public ScheduleAppointmentCollection Events { get; set; }
         public SchedulerViewModel()
         {
             this.Events = new ScheduleAppointmentCollection();
@@ -28,24 +28,6 @@ namespace SchedulerWPF
                 }
             };
             Events.Add(scheduleAppointment);
-        }
-                
-        public ScheduleAppointmentCollection Events
-        {
-            get
-            {
-                return this.events;
-            }
-            set
-            {
-                this.events = value;
-                this.RaiseOnPropertyChanged("ScheduleAppointmentCollection");
-            }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaiseOnPropertyChanged(string propertyName)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
